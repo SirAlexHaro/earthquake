@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -37,9 +36,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="vSa-q8-uQX" kind="show" identifier="searchSegue" id="bn3-bq-XUw"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -103,6 +99,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="vSa-q8-uQX" kind="presentation" identifier="SpecificQuakeSegue" id="gQM-jW-9Ux"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -124,15 +123,19 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Recent" image="Globe-25" id="KYh-yB-K3d"/>
+                    <connections>
+                        <outlet property="mapView" destination="Drq-FX-lmi" id="BC4-pd-l5g"/>
+                        <outlet property="recentTableView" destination="b62-HH-rri" id="M3m-Qg-LCH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUX-gL-HcM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="316" y="-389.95502248875567"/>
         </scene>
-        <!--View Controller-->
+        <!--SpecificVC-->
         <scene sceneID="Sih-o2-sM1">
             <objects>
-                <viewController id="D5A-oY-baf" sceneMemberID="viewController">
+                <viewController id="D5A-oY-baf" customClass="SpecificVC" customModule="EarthquakeMapper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tDz-br-6L8"/>
                         <viewControllerLayoutGuide type="bottom" id="hbD-d2-gqC"/>
@@ -141,60 +144,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="M8d-Te-ZrA">
-                                <rect key="frame" x="0.0" y="125" width="375" height="340"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="340" id="pf4-9O-hWQ"/>
-                                </constraints>
-                            </mapView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Clock-25" translatesAutoresizingMaskIntoConstraints="NO" id="QFt-a9-Zr6">
-                                <rect key="frame" x="19" y="509" width="20" height="19"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="M8d-Te-ZrA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="401"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="North Direction-25" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-gd-vmP">
                                 <rect key="frame" x="19" y="571" width="20" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Marker-25" translatesAutoresizingMaskIntoConstraints="NO" id="R14-lM-aXf">
-                                <rect key="frame" x="204" y="505" width="22" height="22"/>
+                                <rect key="frame" x="18" y="505" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Earthquakes-25" translatesAutoresizingMaskIntoConstraints="NO" id="faW-NK-asg">
                                 <rect key="frame" x="203" y="568" width="23" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-NB-z7Q" userLabel="cityTextField">
-                                <rect key="frame" x="16" y="64" width="343" height="61"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="4gX-v7-TAW"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bi6-3R-AjV">
-                                <rect key="frame" x="47" y="508" width="136" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avt-3l-zYv">
-                                <rect key="frame" x="234" y="505" width="136" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TX-4P-BoF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Magnitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4TX-4P-BoF">
                                 <rect key="frame" x="234" y="568" width="136" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUP-Jj-Xbp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coordinates" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUP-Jj-Xbp">
                                 <rect key="frame" x="47" y="569" width="136" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avt-3l-zYv">
+                                <rect key="frame" x="47" y="506" width="312" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Link To More Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRG-sE-V8F">
+                                <rect key="frame" x="16" y="626" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -202,22 +190,26 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="M8d-Te-ZrA" firstAttribute="leading" secondItem="Zgg-N1-CWN" secondAttribute="leading" id="Hxs-IG-Qwl"/>
-                            <constraint firstItem="mWa-NB-z7Q" firstAttribute="top" secondItem="tDz-br-6L8" secondAttribute="bottom" id="MzZ-uB-H93"/>
-                            <constraint firstAttribute="trailing" secondItem="M8d-Te-ZrA" secondAttribute="trailing" id="VXL-Ez-3Qm"/>
-                            <constraint firstItem="M8d-Te-ZrA" firstAttribute="top" secondItem="mWa-NB-z7Q" secondAttribute="bottom" id="dnI-j8-AVt"/>
-                            <constraint firstItem="mWa-NB-z7Q" firstAttribute="leading" secondItem="Zgg-N1-CWN" secondAttribute="leadingMargin" id="rVf-eb-ccL"/>
-                            <constraint firstItem="mWa-NB-z7Q" firstAttribute="trailing" secondItem="Zgg-N1-CWN" secondAttribute="trailingMargin" id="znJ-gn-L1o"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="05L-tc-gwV">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="3Uu-Ey-nH0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="3Uu-Ey-nH0">
+                            <connections>
+                                <segue destination="ml8-Uo-BFw" kind="unwind" unwindAction="unwindToMainViewWithSegue:" id="5xe-XP-a9Y"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="coordinatesLabel" destination="AUP-Jj-Xbp" id="GPs-lQ-I3A"/>
+                        <outlet property="linkLabel" destination="JRG-sE-V8F" id="T0H-WE-Rf2"/>
+                        <outlet property="locationLabel" destination="avt-3l-zYv" id="Cj5-1S-g7H"/>
+                        <outlet property="magnitudeLabel" destination="4TX-4P-BoF" id="lPl-vg-AmW"/>
+                        <outlet property="specificMapView" destination="M8d-Te-ZrA" id="oVy-9a-xPe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6c-uv-9xZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ml8-Uo-BFw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1957.5" y="-30.5"/>
+            <point key="canvasLocation" x="1956" y="-31.03448275862069"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SIH-6r-JKN">
@@ -260,7 +252,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Clock-25" width="25" height="25"/>
         <image name="Earthquakes-25" width="25" height="25"/>
         <image name="Globe-25" width="25" height="25"/>
         <image name="Marker-25" width="25" height="25"/>
