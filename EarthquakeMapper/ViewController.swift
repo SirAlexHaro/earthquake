@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
+
 class ViewController: UIViewController, UITableViewDelegate{
     
     var earthquakes = ["Los Angeles","Mexico","Cabo San Lucas", "San Jose", "Gilroy", "Guasave", "Sinaloa", "Guamuchil"
@@ -17,6 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate{
     
     @IBOutlet weak var recentTableView: UITableView!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
