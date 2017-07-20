@@ -14,6 +14,7 @@
 		081ACB0C1F20076800F1CCEF /* EarthquakeMapperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACB0B1F20076800F1CCEF /* EarthquakeMapperUITests.swift */; };
 		081ACB1A1F200A7500F1CCEF /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081ACB191F200A7500F1CCEF /* searchViewController.swift */; };
 		081ACB1C1F20170000F1CCEF /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 081ACB1B1F20170000F1CCEF /* assets.xcassets */; };
+		08A053A51F204AB100AB4BA2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A053A41F204AB100AB4BA2 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		081ACB0D1F20076800F1CCEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		081ACB191F200A7500F1CCEF /* searchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 		081ACB1B1F20170000F1CCEF /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = assets.xcassets; path = ../assets.xcassets; sourceTree = "<group>"; };
+		08A053A41F204AB100AB4BA2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				081ACAED1F20076800F1CCEF /* ViewController.swift */,
 				081ACB191F200A7500F1CCEF /* searchViewController.swift */,
 				081ACAEF1F20076800F1CCEF /* Main.storyboard */,
+				08A053A41F204AB100AB4BA2 /* TableViewCell.swift */,
 				081ACAF71F20076800F1CCEF /* Info.plist */,
 			);
 			path = EarthquakeMapper;
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				081ACAEE1F20076800F1CCEF /* ViewController.swift in Sources */,
+				08A053A51F204AB100AB4BA2 /* TableViewCell.swift in Sources */,
 				081ACAEC1F20076800F1CCEF /* AppDelegate.swift in Sources */,
 				081ACB1A1F200A7500F1CCEF /* searchViewController.swift in Sources */,
 			);
