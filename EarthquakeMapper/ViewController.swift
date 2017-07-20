@@ -10,6 +10,8 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController {
+    
+    var krisVar = "Hello"
 
     override func viewDidLoad() {
         super.viewDidLoad()
